@@ -1,0 +1,70 @@
+
+## `morocco_flag_stay.svg`
+```svg
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Morocco flag 2:3 with creative "STAY" overlay (black/red) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" role="img" aria-labelledby="title desc">
+  <title id="title">Morocco Flag with STAY overlay</title>
+  <desc id="desc">Red 2:3 flag with centered green pentagram; editable overlay text in black/red.</desc>
+
+  <!-- CSS variables for easy tweaks -->
+  <style>
+    :root {
+      --morocco-red: #C1272D;  /* common HEX used for Morocco red */
+      --morocco-green: #006233;/* common HEX used for Morocco green */
+      --accent-black: #000000;
+      --accent-red: #C1272D;
+    }
+    #overlay {
+      font-family: "Poppins", "Arial Black", Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      letter-spacing: 1px;
+      paint-order: stroke fill markers;
+    }
+  </style>
+
+  <!-- Background (2:3 ratio is set by viewBox 300x200) -->
+  <rect width="300" height="200" fill="var(--morocco-red)"/>
+
+  <!-- Centered green pentagram (linear star) per construction guidance:
+       - Flag length L = 300
+       - Star radius R ≈ L/6 = 50
+       - Stroke width ≈ 1/20 of star length (~5) -->
+  <g id="pentagram" transform="translate(150,100)">
+    <g fill="none" stroke="var(--morocco-green)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Draw star by connecting every second point on a 5-point circle -->
+      <polygon points="
+        0,-50
+        47.55,15.45
+        -40.45,-29.39
+        40.45,-29.39
+        -47.55,15.45
+      " fill="none"/>
+      <!-- Connect in star order (0 -> 2 -> 4 -> 1 -> 3 -> back to 0) -->
+      <path d="
+        M 0,-50
+        L -40.45,-29.39
+        L -47.55,15.45
+        L 40.45,-29.39
+        L 47.55,15.45
+        Z
+      " />
+    </g>
+  </g>
+
+  <!-- Creative overlay text -->
+  <!-- Edit the content "STAY" or replace with any text you want -->
+  <text id="overlay"
+        x="150" y="116"
+        text-anchor="middle"
+        font-size="62"
+        fill="var(--accent-black)"
+        stroke="var(--accent-red)"
+        stroke-width="3">
+    STAY
+    <animate attributeName="letter-spacing" values="1;2;1" dur="3s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- subtle shadow for readability -->
+  <text x="151" y="118" text-anchor="middle" font-size="62" fill="rgba(0,0,0,0.15)" font-weight="900">STAY</text>
+</svg>
